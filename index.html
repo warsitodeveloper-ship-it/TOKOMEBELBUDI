@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOKO MEBEL BUDI JAYA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background: #fafafa; color: #333; }
+    header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 2px solid #ddd; margin-bottom: 30px; }
+    .navbar-brand { font-size: 1.8rem; font-weight: bold; color: #007bff; }
+    nav a { margin: 0 10px; color: #007bff; text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+    nav a:hover { text-decoration: underline; }
+
+    .product-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .product { background: white; border-radius: 8px; padding: 15px; box-shadow: 0 2px 6px rgb(0 0 0 / 0.1); text-align: center; transition: box-shadow 0.3s ease; }
+    .product:hover { box-shadow: 0 4px 12px rgb(0 0 0 / 0.15); }
+    .product img { max-width: 100%; height: auto; border-radius: 6px; margin-bottom: 12px; }
+    .product h3 { font-size: 1.2rem; margin-bottom: 8px; color: #222; }
+    .product p { font-size: 1rem; font-weight: bold; color: #007bff; margin-bottom: 12px; }
+    .product button { background-color: #007bff; border: none; color: white; padding: 8px 14px; font-size: 1rem; border-radius: 5px; cursor: pointer; }
+    .product button:hover { background-color: #0056b3; }
+
+    #cart, #contact { margin-top: 40px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgb(0 0 0 / 0.1); }
+    #cart h2, #contact h2 { margin-bottom: 15px; color: #007bff; }
+    #cart-items { list-style: none; margin-bottom: 20px; }
+    #cart-items li { margin-bottom: 10px; font-size: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    #cart-items button { background-color: #ff4d4d; border: none; color: white; padding: 5px 10px; border-radius: 3px; font-size: 0.9rem; }
+    #total { font-weight: 700; font-size: 1.2rem; }
+
+    #checkout-btn, #clear-btn { margin-right: 10px; border: none; border-radius: 5px; padding: 10px 18px; font-size: 1rem; cursor: pointer; color: white; display: inline-flex; align-items: center; gap: 6px; }
+    #checkout-btn { background-color: #25D366; }
+    #checkout-btn:hover { background-color: #1da851; }
+    #clear-btn { background-color: #d9534f; }
+    #clear-btn:hover { background-color: #b52b28; }
+
+    footer { background: #f1f1f1; padding: 25px 20px; text-align: center; margin-top: 60px; font-size: 1rem; }
+    footer a { margin: 0 10px; text-decoration: none; color: #333; font-weight: 600; }
+    footer a:hover { color: #007bff; }
+    footer p { margin: 5px 0; }
+    .copyright { margin-top: 15px; font-size: 0.9rem; color: #666; }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      nav { margin-top: 10px; width: 100%; }
+      nav a { display: inline-block; margin: 5px 10px 0 0; font-size: 1rem; }
+      #cart-items li { flex-direction: column; align-items: flex-start; }
+      #cart-items button { margin-top: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="navbar-brand">TOKO MEBEL BUDI JAYA</h1>
+    <nav>
+      <a href="#catalog">Katalog</a>
+      <a href="#cart">Keranjang</a>
+      <a href="#contact">Hubungi Kami</a>
+    </nav>
+  </header>
+
+  <section id="catalog">
+    <h2>Katalog Produk</h2>
+    <div class="product-list">
+      <!-- CONTOH PRODUK (tambahkan sesuai kebutuhan Anda) -->
+      <div class="product" data-name="Kursi Kayu Jati" data-price="2500000">
+        <img src="images\kursi_jati.jpg" alt="Kursi Kayu Jati" />
+        <h3>Kursi Kayu Jati</h3>
+        <p>Rp 2.500.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Meja Makan" data-price="1500000">
+        <img src="images/meja_makan_jati.jpg" alt="Meja-Makan-Jati-4-Kursi">
+        <h3>Meja Makan</h3>
+        <p>Rp 1.500.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="kursi Sofa Sudut" data-price="2500000">
+        <img src="images/kursi_sofa_sudut.jpg" alt="kursi Sofa Sudut">
+        <h3>kursi Sofa Sudut</h3>
+        <p>Rp 2.500.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="kasur Busa 140x200 Tebal 20cm" data-price="1300000">
+        <img src="images/kasur_busa_140x200x20cm.jpeg" alt="kasur Busa 140x200 Tebal 20cm">
+        <h3>kasur Busa 140x200 Tebal 20cm</h3>
+        <p>Rp 1.300.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="kasur Busa 160x200 Tebal 20cm" data-price="1600000">
+        <img src="images/kasur_busa_160x200x20cm.jpeg" alt="kasur Busa 160x200 Tebal 20cm">
+        <h3>kasur Busa 160x200 Tebal 20cm</h3>
+        <p>Rp 1.600.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="kasur Busa 140x200 Tebal 30cm" data-price="1600000">
+        <img src="images/kasur_busa_140x200x30cm.jpg" alt="kasur Busa 140x200 Tebal 30cm">
+        <h3>kasur Busa 140x200 Tebal 30cm</h3>
+        <p>Rp 1.600.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="kasur Busa 160x200 Tebal 30cm" data-price="1800000">
+        <img src="images/kasur_busa_160x200x30cm.jpg" alt="kasur Busa 160x200 Tebal 30cm">
+        <h3>kasur Busa 160x200 Tebal 30cm</h3>
+        <p>Rp 1.800.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Bufet meja TV 120cm" data-price="1000000">
+        <img src="images/bufet_meja_tv_120.webp" alt="Bufet meja TV 120cm">
+        <h3>Bufet meja TV 120cm</h3>
+        <p>Rp 1.000.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Lemari Plastik Susun 4" data-price="550000">
+        <img src="images/lemari_plastik_susun_4.jpg" alt="Lemari Plastik Susun 4">
+        <h3>Lemari Plastik Susun 4</h3>
+        <p>Rp 550.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Lemari Plastik Susun 3" data-price="400000">
+        <img src="images/lemari_plastik_susun_3.jpeg" alt="Lemari Plastik Susun 3">
+        <h3>Lemari Plastik Susun 3</h3>
+        <p>Rp 400.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Ayunan dondang bayi" data-price="350000">
+        <img src="images/ayunan_dondang_bayi.webp" alt="Ayunan dondang bayi">
+        <h3>Ayunan dondang bayi</h3>
+        <p>Rp 350.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Ayunan Bayi Besi" data-price="325000">
+        <img src="images/ayunan_bayi_besi.jpg" alt="Ayunan Bayi Besi">
+        <h3>Ayunan Bayi Besi</h3>
+        <p>Rp 325.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Rak Sepatu Besi" data-price="275000">
+        <img src="images/rak_sepatu_besi.webp" alt="Rak Sepatu Besi">
+        <h3>Rak Sepatu Besi</h3>
+        <p>Rp 275.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Rak Piring Master" data-price="325000">
+        <img src="images/rak_piring_master.jpg" alt="Rak Piring Master">
+        <h3>Rak Piring Master</h3>
+        <p>Rp 325.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Lemari Olympic 2 Pintu" data-price="1000000">
+        <img src="images/lemari_olympic_pintu_2.webp" alt="Lemari Olympic 2 Pintu">
+        <h3>Lemari Olympic Pintu 2</h3>
+        <p>Rp 1.000.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Lemari Jati 4 Pintu" data-price="1400000">
+        <img src="images/lemari_jati_pintu_4.jpg" alt="Lemari Jati 4 Pintu">
+        <h3>Lemari Jati 4 Pintu</h3>
+        <p>Rp 1.400.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Jemuran Handuk" data-price="160000">
+        <img src="images/rak_jemuran_handuk.jpeg" alt="Jemuran Handuk">
+        <h3>Jemuran Handuk</h3>
+        <p>Rp 160.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Bantal Kapuk" data-price="50000">
+        <img src="images/batal_kapuk.jpg" alt="Bantal Kapuk">
+        <h3>Bantal Kapuk</h3>
+        <p>Rp 50.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+      </div>
+      <div class="product" data-name="Bantal Guling" data-price="50000">
+        <img src="images/batal_guling.webp" alt="Bantal Guling">
+        <h3>Bantal Guling</h3>
+        <p>Rp 50.000</p>
+        <button onclick="addToCart(this)">Tambah ke Keranjang</button>
+    </div>
+</section>
+
+
+  <section id="cart">
+    <h2>Keranjang Belanja</h2>
+    <ul id="cart-items"></ul>
+    <p id="total">Total: Rp 0</p>
+    <button id="checkout-btn" onclick="checkout()">Checkout 🛒</button>
+    <button id="clear-btn" onclick="clearCart()">Hapus Semua</button>
+  </section>
+
+  <section id="contact">
+    <h2>Hubungi Kami</h2>
+    <p>📞 Whatsapp: <a href="https://wa.me/6282220676361" target="_blank">082220676361</a></p>
+    <p>📧 Gmail: <a href="mailto:tokomebelbudijaya@gmail.com" target="_blank">tokomebelbudijaya@gmail.com</a></p>
+    <p>🎵 TikTok: <a href="https://www.tiktok.com/@toko.mebel.budi.j?_t=ZS-8yUHmdDtNez&_r=1" target="_blank">@tokomebelbudijayacomal</a></p>
+    <p>📸 Instagram: <a href="https://www.instagram.com/mebel_budi_jaya_comal?igsh=MTdjN2xjN3I2OXR1aw%3D%3D&utm_source=qr" target="_blank">@mebelbudijayacomal</a></p>
+    <p>📍 Alamat: Jl. Ahmad Yani No.12 Pasar Comal, jawa Tengah, Indonesia</p>
+  </section>
+
+  <footer>
+    <p>Hubungi Kami:</p>
+    <p>
+      <a href="mailto:tokomebelbudijaya@gmail.com" target="_blank">📧 Gmail</a> |
+      <a href="https://www.instagram.com/mebel_budi_jaya_comal?igsh=MTdjN2xjN3I2OXR1aw%3D%3D&utm_source=qr" target="_blank">📸 Instagram</a> |
+      <a href="https://www.tiktok.com/@toko.mebel.budi.j?_t=ZS-8yUHmdDtNez&_r=1" target="_blank">🎵 TikTok</a>
+    </p>
+    <p class="copyright">
+      &copy; 2025 TOKO MEBEL BUDI JAYA — Semua hak cipta dilindungi.<br/>
+      Alamat: Jl. Ahmad Yani No.12 Pasar Comal, jawa Tengah, Indonesia
+    </p>
+  </footer>
+
+  <script>
+    const cartItems = document.getElementById('cart-items');
+    const totalEl = document.getElementById('total');
+    let cart = [];
+
+    function addToCart(button) {
+      const productDiv = button.closest('.product');
+      const name = productDiv.dataset.name;
+      const price = Number(productDiv.dataset.price);
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, i) => {
+        total += item.price * item.qty;
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${item.name} x ${item.qty} - Rp ${(item.price * item.qty).toLocaleString()} 
+          <button onclick="removeItem(${i})">Hapus</button>`;
+        cartItems.appendChild(li);
+      });
+      totalEl.textContent = `Total: Rp ${total.toLocaleString()}`;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function clearCart() {
+      if (confirm('Yakin ingin menghapus semua item di keranjang?')) {
+        cart = [];
+        renderCart();
+      }
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Keranjang masih kosong!');
+        return;
+      }
+      let message = '*Order Mebel Budi Jaya*\n\n';
+      cart.forEach(item => {
+        message += `• ${item.name} x${item.qty} = Rp ${(item.price * item.qty).toLocaleString()}\n`;
+      });
+      const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      message += `\nTotal: Rp ${total.toLocaleString()}`;
+      const encoded = encodeURIComponent(message);
+      const waLink = `https://wa.me/6282220676361?text=${encoded}`;
+      window.open(waLink, '_blank');
+    }
+  </script>
+</body>
+</html>
